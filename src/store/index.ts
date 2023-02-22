@@ -7,6 +7,7 @@ import {
 	PERSIST,
 	PURGE,
 	REGISTER,
+	persistStore,
 } from "redux-persist";
 import storage from "redux-persist/es/storage";
 import authReducer from "./slice/auth.slice";
@@ -37,3 +38,4 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export const persistor = persistStore(store);
