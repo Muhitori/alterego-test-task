@@ -7,7 +7,7 @@ interface Props {
 
 export const ProtectedRoute: FC<Props> = ({ isAllowed }) => {
 	if (!isAllowed) {
-		return <Navigate to={"/"} />;
+		return <Navigate to='/' />;
 	}
 
 	return <Outlet />;
