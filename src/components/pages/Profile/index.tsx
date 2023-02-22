@@ -1,3 +1,11 @@
+import { Container, Typography } from "@mui/material";
+
 export const Profile = () => {
-	return <div>Profile</div>;
+	return (
+		<Container>
+			<Typography textAlign='center' variant='h1'>
+				Profile
+			</Typography>
+		</Container>
+	);
 };
