@@ -4,6 +4,12 @@
     "logout": "Logout",
     "home": "Home",
     "news": "News",
-    "profile": "Profile"
+    "profile": "Profile",
+    "auth modal title": "Sign in",
+    "username": "Username",
+    "password": "Password",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "required": "Required"
   }
 }

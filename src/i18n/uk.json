@@ -4,6 +4,12 @@
     "logout": "Вийти",
     "home": "Головна",
     "news": "Новини",
-    "profile": "Профіль"
+    "profile": "Профіль",
+    "auth modal title": "Вхід",
+    "username": "Ім'я користувача",
+    "password": "Пароль",
+    "cancel": "Відміна",
+    "confirm": "Підтвердити",
+    "required": "Обов'язкове поле"
   }
 }

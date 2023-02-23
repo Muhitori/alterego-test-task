@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 import { userSelector } from "../../store/selectors/auth.selector";
 import { setUser } from "../../store/slice/auth.slice";
 import { languages } from "../../utils/constants";
+import { AuthModal } from "../AuthModal";
+import { User } from "../../types/User";
 
 export const Navbar = () => {
 	const dispatch = useDispatch();
@@ -23,6 +25,7 @@ export const Navbar = () => {
 	const isLoggedIn = Boolean(useSelector(userSelector));
 
 	const [language, setLanguage] = useState("en");
+	const [isAuthModalOpened, setAuthModalOpened] = useState(false);
 
 	const handleLanguageChange = (event: SelectChangeEvent<string>) => {
 		const { value } = event.target;
@@ -31,10 +34,11 @@ export const Navbar = () => {
 		changeLanguage(value);
 	};
 
+	const login = (user: User) => dispatch(setUser(user));
 	const logout = () => dispatch(setUser(null));
 
-	const login = () =>
-		dispatch(setUser({ username: "admin", password: "12345" }));
+	const openAuthModal = () => setAuthModalOpened(true);
+	const closeAuthModal = () => setAuthModalOpened(false);
 
 	return (
 		<>
@@ -60,7 +64,9 @@ export const Navbar = () => {
 							label='Language'
 							onChange={handleLanguageChange}>
 							{languages.map((language) => (
-								<MenuItem value={language}>{language}</MenuItem>
+								<MenuItem key={language} value={language}>
+									{language}
+								</MenuItem>
 							))}
 						</Select>
 
@@ -69,13 +75,19 @@ export const Navbar = () => {
 								{t("logout")}
 							</Button>
 						) : (
-							<Button color='inherit' onClick={login}>
+							<Button color='inherit' onClick={openAuthModal}>
 								{t("login")}
 							</Button>
 						)}
 					</Box>
 				</Toolbar>
 			</AppBar>
+
+			<AuthModal
+				open={isAuthModalOpened}
+				onClose={closeAuthModal}
+				submit={login}
+			/>
 		</>
 	);
 };
