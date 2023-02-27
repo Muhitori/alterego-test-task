@@ -9,7 +9,7 @@ import { Main } from "../components/pages/Main";
 import { News } from "../components/pages/News";
 import { Profile } from "../components/pages/Profile";
 
-export const rootRoute = process.env.PUBLIC_URL;
+export const rootRoute = process.env.PUBLIC_URL || "/";
 
 export const Router = () => {
 	const isLoggedIn = Boolean(useSelector(userSelector));
