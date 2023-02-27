@@ -2,6 +2,7 @@
   "name": "alterego-test-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://muhitori.github.io/alterego-test-task",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -17,6 +18,7 @@
     "@types/react-dom": "^18.0.11",
     "axios": "^1.3.4",
     "formik": "^2.2.9",
+    "gh-pages": "^5.0.0",
     "i18next": "^22.4.10",
     "install": "^0.13.0",
     "notistack": "^2.0.8",
@@ -33,6 +35,8 @@
     "yup": "^1.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

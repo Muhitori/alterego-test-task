@@ -41,7 +41,11 @@ const initialState: State = {
 export const newsSlice = createSlice({
 	name: "news",
 	initialState,
-	reducers: {},
+	reducers: {
+		resetNews: (state) => {
+			state.list = [];
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(getNewsAsync.fulfilled, (state, action) => {
 			state.list = [...state.list, ...action.payload];
@@ -51,5 +55,7 @@ export const newsSlice = createSlice({
 		});
 	},
 });
+
+export const { resetNews } = newsSlice.actions;
 
 export default newsSlice.reducer;

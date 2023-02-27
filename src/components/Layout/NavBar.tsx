@@ -18,6 +18,7 @@ import { setUser } from "../../store/slice/auth.slice";
 import { languages } from "../../utils/constants";
 import { AuthModal } from "../AuthModal";
 import { User } from "../../types/User";
+import { rootRoute } from "../../router";
 
 export const Navbar = () => {
 	const dispatch = useDispatch();
@@ -45,14 +46,14 @@ export const Navbar = () => {
 			<AppBar position='relative'>
 				<Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
 					<Box display='flex' gap={2}>
-						<Link to='/'>
+						<Link to={rootRoute}>
 							<Typography variant='h6'>{t("home")}</Typography>
 						</Link>
-						<Link to='/news'>
+						<Link to='news'>
 							<Typography variant='h6'>{t("news")}</Typography>
 						</Link>
 						{isLoggedIn && (
-							<Link to='/profile'>
+							<Link to='profile'>
 								<Typography variant='h6'>{t("profile")}</Typography>
 							</Link>
 						)}
