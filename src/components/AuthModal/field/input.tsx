@@ -1,23 +1,27 @@
-import { Field, FieldProps } from "formik";
+import { Field, FieldProps, useFormikContext } from "formik";
 import { TextField } from "@mui/material";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
+import type { User } from "../../../types/User";
 
 interface Props {
-	name: string;
+	name: keyof User;
 }
 
 export const Input: FC<Props> = ({ name }) => {
+	const { errors, touched } = useFormikContext<User>();
 	const { t } = useTranslation();
+
+	const hasError = touched[name] && Boolean(errors[name]);
 
 	return (
 		<Field name={name}>
-			{({ field, form }: FieldProps) => (
+			{({ field }: FieldProps) => (
 				<TextField
 					fullWidth
-					error={Boolean(form.errors[name])}
+					error={hasError}
 					label={t(name)}
-					helperText={form.errors[name] && `${t(form.errors[name] as string)}`}
+					helperText={hasError && `${t(errors[name] as string)}`}
 					{...field}
 				/>
 			)}

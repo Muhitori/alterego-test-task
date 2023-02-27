@@ -10,15 +10,20 @@ import {
 	persistStore,
 } from "redux-persist";
 import storage from "redux-persist/es/storage";
+import type {} from "redux-thunk/extend-redux";
+
 import authReducer from "./slice/auth.slice";
+import newsReducer from "./slice/news.slice";
 
 const reducers = combineReducers({
 	auth: authReducer,
+	news: newsReducer,
 });
 
 const persistConfig = {
 	key: "root",
 	storage,
+	blacklist: ["news"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -1,10 +1,13 @@
 import { Container, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 export const Profile = () => {
+	const { t } = useTranslation();
+
 	return (
 		<Container>
 			<Typography textAlign='center' variant='h1'>
-				Profile
+				{t("profile")}
 			</Typography>
 		</Container>
 	);

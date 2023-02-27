@@ -12,11 +12,12 @@ import Slide from "@mui/material/Slide";
 import { FC, useRef } from "react";
 import { Formik, Form, FormikProps } from "formik";
 import { snackbarGenerator } from "../SnackbarGenerator";
-import { User } from "../../types/User";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import type { User } from "../../types/User";
 
 import { Input } from "./field/input";
 import { PASSWORD, USERNAME } from "../../utils/constants";
-import { useTranslation } from "react-i18next";
 
 const validationSchema = Yup.object().shape({
 	username: Yup.string().required("required"),
@@ -36,6 +37,7 @@ interface Props {
 }
 
 export const AuthModal: FC<Props> = ({ open, onClose, submit }) => {
+	const navigate = useNavigate();
 	const formRef = useRef<FormikProps<User> | null>(null);
 
 	const { t } = useTranslation();
@@ -45,6 +47,7 @@ export const AuthModal: FC<Props> = ({ open, onClose, submit }) => {
 
 		if (username === USERNAME && password === PASSWORD) {
 			submit(data);
+			navigate("profile");
 			snackbarGenerator.success("Authorized!");
 			onClose();
 		} else {
