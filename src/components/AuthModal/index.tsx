@@ -16,8 +16,9 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import type { User } from "../../types/User";
 
-import { Input } from "./field/input";
+import { Input } from "./field/Input";
 import { PASSWORD, USERNAME } from "../../utils/constants";
+import { PasswordInput } from "./field/PasswordInput";
 
 const validationSchema = Yup.object().shape({
 	username: Yup.string().required("required"),
@@ -84,7 +85,7 @@ export const AuthModal: FC<Props> = ({ open, onClose, submit }) => {
 							<Form>
 								<Box width='100%' display='flex' flexDirection='column' gap={2}>
 									<Input name='username' />
-									<Input name='password' />
+									<PasswordInput name='password' />
 								</Box>
 							</Form>
 						</Formik>
