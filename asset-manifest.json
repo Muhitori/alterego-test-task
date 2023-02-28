@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/alterego-test-task/static/js/main.6f4daf78.js",
+    "main.js": "/alterego-test-task/static/js/main.06022cc6.js",
     "static/js/787.8d7411e6.chunk.js": "/alterego-test-task/static/js/787.8d7411e6.chunk.js",
     "index.html": "/alterego-test-task/index.html",
-    "main.6f4daf78.js.map": "/alterego-test-task/static/js/main.6f4daf78.js.map",
+    "main.06022cc6.js.map": "/alterego-test-task/static/js/main.06022cc6.js.map",
     "787.8d7411e6.chunk.js.map": "/alterego-test-task/static/js/787.8d7411e6.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.6f4daf78.js"
+    "static/js/main.06022cc6.js"
   ]
 }
