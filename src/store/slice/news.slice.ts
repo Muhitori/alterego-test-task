@@ -5,6 +5,7 @@ import type { Post } from "../../types/Post";
 
 interface State {
 	list: Post[];
+	isLoading: boolean;
 }
 
 export const getNewsAsync = createAsyncThunk(
@@ -36,6 +37,7 @@ export const deletePostAsync = createAsyncThunk(
 
 const initialState: State = {
 	list: [],
+	isLoading: false,
 };
 
 export const newsSlice = createSlice({
@@ -49,6 +51,13 @@ export const newsSlice = createSlice({
 	extraReducers: (builder) => {
 		builder.addCase(getNewsAsync.fulfilled, (state, action) => {
 			state.list = [...state.list, ...action.payload];
+			state.isLoading = false;
+		});
+		builder.addCase(getNewsAsync.pending, (state) => {
+			state.isLoading = true;
+		});
+		builder.addCase(getNewsAsync.rejected, (state) => {
+			state.isLoading = true;
 		});
 		builder.addCase(deletePostAsync.fulfilled, (state, action) => {
 			state.list = state.list.filter(({ id }) => action.payload !== id);
