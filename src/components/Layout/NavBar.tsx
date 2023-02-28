@@ -15,10 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { userSelector } from "../../store/selectors/auth.selector";
 import { setUser } from "../../store/slice/auth.slice";
-import { languages } from "../../utils/constants";
+import { languages, ROOT_ROUTE } from "../../utils/constants";
 import { AuthModal } from "../AuthModal";
 import { User } from "../../types/User";
-import { rootRoute } from "../../router";
 
 export const Navbar = () => {
 	const dispatch = useDispatch();
@@ -46,7 +45,7 @@ export const Navbar = () => {
 			<AppBar position='relative'>
 				<Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
 					<Box display='flex' gap={2}>
-						<Link to={rootRoute}>
+						<Link to={ROOT_ROUTE}>
 							<Typography variant='h6'>{t("home")}</Typography>
 						</Link>
 						<Link to='news'>

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { rootRoute } from ".";
+import { ROOT_ROUTE } from "../utils/constants";
 
 interface Props {
 	isAllowed: boolean;
@@ -8,7 +8,7 @@ interface Props {
 
 export const ProtectedRoute: FC<Props> = ({ isAllowed }) => {
 	if (!isAllowed) {
-		return <Navigate to={rootRoute} />;
+		return <Navigate to={ROOT_ROUTE} />;
 	}
 
 	return <Outlet />;

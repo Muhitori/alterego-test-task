@@ -8,8 +8,7 @@ import { Layout } from "../components/Layout";
 import { Main } from "../components/pages/Main";
 import { News } from "../components/pages/News";
 import { Profile } from "../components/pages/Profile";
-
-export const rootRoute = process.env.PUBLIC_URL || "/";
+import { ROOT_ROUTE } from "../utils/constants";
 
 export const Router = () => {
 	const isLoggedIn = Boolean(useSelector(userSelector));
@@ -17,7 +16,7 @@ export const Router = () => {
 	return (
 		<Routes>
 			<Route
-				path={rootRoute}
+				path={ROOT_ROUTE}
 				element={
 					<Layout>
 						<Outlet />
@@ -28,7 +27,7 @@ export const Router = () => {
 				<Route element={<ProtectedRoute isAllowed={isLoggedIn} />}>
 					<Route path='profile' element={<Profile />} />
 				</Route>
-				<Route path='*' element={<Navigate to={rootRoute} />} />
+				<Route path='*' element={<Navigate to={ROOT_ROUTE} />} />
 			</Route>
 		</Routes>
 	);

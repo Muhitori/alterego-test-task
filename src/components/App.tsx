@@ -1,16 +1,18 @@
 import { CssBaseline } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { Router } from "../router";
 import { persistor, store } from "../store";
 import { SnackbarGenerator } from "./SnackbarGenerator";
-import { MAX_SNACK } from "../utils/constants";
+import { MAX_SNACK, ROOT_ROUTE } from "../utils/constants";
+
+import "../utils/ensure-basename";
 
 export const App = () => {
 	return (
-		<BrowserRouter>
+		<HashRouter basename={ROOT_ROUTE}>
 			<Provider store={store}>
 				<PersistGate persistor={persistor}>
 					<SnackbarProvider maxSnack={MAX_SNACK}>
@@ -21,6 +23,6 @@ export const App = () => {
 					</SnackbarProvider>
 				</PersistGate>
 			</Provider>
-		</BrowserRouter>
+		</HashRouter>
 	);
 };
